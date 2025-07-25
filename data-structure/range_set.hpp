@@ -1,5 +1,4 @@
 #pragma once
-#include <algorithm>
 #include <climits>
 #include <iterator>
 #include <set>
@@ -16,37 +15,29 @@ public:
   }
 
   bool insert(int x) {
-    auto bis = s.lower_bound(std::make_pair(x + 1, x + 1));
-    auto it = std::prev(bis);
+    auto it = s.lower_bound({x + 1, x + 1});
+    auto prev_it = std::prev(it);
 
-    auto [l, r] = *it;
+    auto [l, r] = *prev_it;
     auto [nl, nr] = *it;
-
-    int al = x, ar = x;
 
     if (l <= x && x <= r) {
       return false;
     }
 
+    int al = x, ar = x;
+
     if (r == x - 1) {
       al = l;
+      s.erase(prev_it);
+    }
 
-      if (nl == x + 1) {
-        s.erase(it);
-        s.erase(bis);
-        ar = nr;
-      } else {
-        s.erase(it);
-      }
-    } else {
-      if (nl == x + 1) {
-        ar = nr;
-        s.erase(bis);
-      }
+    if (nl == x + 1) {
+      ar = nr;
+      s.erase(it);
     }
 
     s.emplace(al, ar);
-
     return true;
   }
 
