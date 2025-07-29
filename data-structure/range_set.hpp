@@ -41,6 +41,25 @@ public:
     return true;
   }
 
+  void erase(int x) {
+    auto it = std::prev(s.lower_bound({x + 1, x + 1}));
+    auto [l, r] = *it;
+
+    s.erase(it);
+    if (l == x && r == x) {
+      return;
+    }
+
+    if (l == x) {
+      s.emplace(x + 1, r);
+    } else if (r == x) {
+      s.emplace(l, x - 1);
+    } else {
+      s.emplace(l, x - 1);
+      s.emplace(x + 1, r);
+    }
+  }
+
   int mex(int x = 0) {
     auto [l, r] = *std::prev(s.lower_bound(std::make_pair(x + 1, x + 1)));
 
