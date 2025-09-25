@@ -22,16 +22,4 @@ template <typename T> bool chmax(T &a, T b) {
   return false;
 }
 
-void YN(bool b) { std::cout << (b ? "Yes" : "No") << std::endl; }
-void YE(bool b) {
-  if (b) {
-    std::cout << "Yes" << std::endl;
-    exit(1);
-  }
-}
-void NE(bool b) {
-  if (b) {
-    std::cout << "No" << std::endl;
-    exit(1);
-  }
-}
+constexpr void YN(bool b) { std::cout << (b ? "Yes" : "No") << std::endl; }
