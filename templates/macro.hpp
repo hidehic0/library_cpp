@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <vector>
 
 #define rep(i, n) for (int i = 0; i < (int)(n); i++)
 #define rrep(i, n) for (int i = n - 1; i >= 0; i--)
@@ -22,4 +23,25 @@ template <typename T> bool chmax(T &a, T b) {
   return false;
 }
 
-constexpr void YN(bool b) { std::cout << (b ? "Yes" : "No") << std::endl; }
+inline void input() {}
+template <class H, class... T> void input(H &h, T &...t) {
+  std::cin >> h;
+  input(t...);
+}
+template <typename T> void input(std::vector<T> &v) {
+  for (int i = 0; i < v.size(); i++) {
+    std::cin >> v[i];
+  }
+}
+
+inline void out() { std::cout << "\n"; }
+template <class H, class... T> void out(H &h, T &...t) {
+  std::cout << h << " ";
+  out(t...);
+}
+
+template <typename T> void out(std::vector<T> v) {
+  for (int i = 0; i < v.size(); i++) {
+    std::cout << v[i] << (i + 1 == v.size() ? "\n" : " ");
+  }
+}
