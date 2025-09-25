@@ -16,3 +16,5 @@ const std::string upperlist = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const std::string lowerlist = "abcdefghijklmnopqrstuvwxyz";
 #define mp make_pair
 #define dms << " " <<
+
+constexpr int MOD998 = 998244353;
