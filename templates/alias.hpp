@@ -6,12 +6,17 @@
 
 using ll = long long;
 using ld = long double;
-using vi = std::vector<long long>;
-using vvi = std::vector<std::vector<long long>>;
-using si = std::set<long long>;
-using mii = std::map<long long, long, long>;
 using pii = std::pair<long long, long long>;
-template <typename T> using V = std::vector<T>;
+using vi = std::vector<long long>;
+using vvi = std::vector<vi>;
+using vvvi = std::vector<vvi>;
+using vf = std::vector<double>;
+using vvf = std::vector<vf>;
+using vpii = std::vector<pii>;
+using vvpii = std::vector<vpii>;
+using si = std::set<long long>;
+using spii = std::set<pii>;
+using mii = std::map<long long, long, long>;
 const std::string upperlist = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const std::string lowerlist = "abcdefghijklmnopqrstuvwxyz";
 #define mp make_pair
