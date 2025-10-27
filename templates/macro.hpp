@@ -45,3 +45,5 @@ template <typename T> void out(std::vector<T> v) {
     std::cout << v[i] << (i + 1 == v.size() ? "\n" : " ");
   }
 }
+
+template <typename T> inline T ceil_div(T a, T b) { return (a + b - 1) / b; }
