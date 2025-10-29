@@ -4,18 +4,19 @@
 #include <string>
 #include <vector>
 
+template <typename T> using VC = std::vector<T>;
 using ll = long long;
 using ld = long double;
 using pii = std::pair<ll, ll>;
-using vi = std::vector<ll>;
-using vvi = std::vector<vi>;
-using vvvi = std::vector<vvi>;
-using vb = std::vector<bool>;
-using vvb = std::vector<vb>;
-using vf = std::vector<double>;
-using vvf = std::vector<vf>;
-using vpii = std::vector<pii>;
-using vvpii = std::vector<vpii>;
+using vi = VC<ll>;
+using vvi = VC<vi>;
+using vvvi = VC<vvi>;
+using vb = VC<bool>;
+using vvb = VC<vb>;
+using vf = VC<double>;
+using vvf = VC<vf>;
+using vpii = VC<pii>;
+using vvpii = VC<vpii>;
 using si = std::set<ll>;
 using spii = std::set<pii>;
 using mii = std::map<ll, ll>;
