@@ -47,3 +47,19 @@ template <typename T> void out(std::vector<T> v) {
 }
 
 template <typename T> inline T ceil_div(T a, T b) { return (a + b - 1) / b; }
+template <typename T> inline T mod_pow(T a, T n, T mod) {
+  T res = 1;
+  while (n) {
+    if (n % 2 != 0) {
+      res *= a;
+      res %= mod;
+    }
+
+    a *= a;
+    a %= mod;
+
+    n >>= 1;
+  }
+
+  return res;
+}
