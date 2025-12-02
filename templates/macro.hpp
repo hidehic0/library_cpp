@@ -23,27 +23,25 @@ template <typename T> bool chmax(T &a, T b) {
   return false;
 }
 
-inline void input() {}
-template <class H, class... T> void input(H &h, T &...t) {
-  std::cin >> h;
-  input(t...);
-}
-template <typename T> void input(std::vector<T> &v) {
-  for (int i = 0; i < v.size(); i++) {
-    std::cin >> v[i];
-  }
+template <typename T1, typename T2>
+std::istream &operator>>(std::istream &is, std::pair<T1, T2> &p) {
+  is >> p.first >> p.second;
+  return is;
 }
 
-inline void out() { std::cout << "\n"; }
-template <class H, class... T> void out(H &h, T &...t) {
-  std::cout << h << " ";
-  out(t...);
+template <typename T>
+std::istream &operator>>(std::istream &is, std::vector<T> &v) {
+  for (T &in : v)
+    is >> in;
+  return is;
 }
 
-template <typename T> void out(std::vector<T> v) {
-  for (int i = 0; i < v.size(); i++) {
-    std::cout << v[i] << (i + 1 == v.size() ? "\n" : " ");
+template <typename T>
+std::ostream &operator>>(std::ostream &os, const std::vector<T> &v) {
+  for (int i = 0; i < (int)v.size(); i++) {
+    os << v[i] << (i + 1 == v.size() ? "" : " ");
   }
+  return os;
 }
 
 template <typename T> inline T ceil_div(T a, T b) { return (a + b - 1) / b; }
