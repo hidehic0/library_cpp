@@ -61,3 +61,8 @@ template <typename T> inline T mod_pow(T a, T n, T mod) {
 
   return res;
 }
+
+template <typename T> void apply_vec(std::vector<T> &v, T (*fn)(T)) {
+  for (int i = 0; i < v.size(); i++)
+    v[i] = fn(v[i]);
+}
