@@ -1,8 +1,10 @@
 #pragma once
+#include <cassert>
 #include <climits>
 #include <iterator>
 #include <set>
 #include <utility>
+#include <vector>
 
 struct RangeSet {
 private:
@@ -39,6 +41,57 @@ public:
 
     s.emplace(al, ar);
     return true;
+  }
+
+  void insert_range(int l, int r) {
+    assert(l <= r);
+    auto it = prev(s.lower_bound(std::make_pair(l + 1, l + 1)));
+    if (it->second)
+      it++;
+
+    // 重複要素を消す
+    int nl = l, nr = r;
+    std::vector<std::pair<int, int>> T;
+
+    while (it->first <= r) {
+      int tl, tr;
+      std::tie(tl, tr) = *it;
+
+      if (tl <= l) {
+        nl = tl;
+      }
+      if (tr >= r)
+        nr = tr;
+
+      T.emplace_back(*it);
+      it++;
+    }
+
+    for (auto [tl, tr] : T)
+      s.erase(std::make_pair(tl, tr));
+
+    s.emplace(nl, nr);
+
+    // 隣接要素を削除
+    it = s.lower_bound(std::make_pair(nl, nl));
+
+    if (prev(it)->second + 1 == nl) {
+      int tmp = nl;
+      nl = prev(it)->first;
+      s.erase(*prev(it));
+      s.erase(std::make_pair(tmp, nr));
+      s.emplace(nl, nr);
+    }
+
+    it = s.lower_bound(std::make_pair(nl, nl));
+
+    if (nr + 1 == next(it)->first) {
+      int tmp = nr;
+      nr = next(it)->second;
+      s.erase(*next(it));
+      s.erase(std::make_pair(nl, tmp));
+      s.emplace(nl, nr);
+    }
   }
 
   void erase(int x) {
