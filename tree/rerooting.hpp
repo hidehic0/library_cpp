@@ -1,11 +1,10 @@
 #pragma once
-#include <algorithm>
 #include <stack>
 #include <vector>
 
-template <class T>
-std::vector<T> rerooting(std::vector<std::vector<int>> G, T (*merge)(T, T),
-                         T (*add_root)(T, int), T e) {
+template <class T, typename S>
+std::vector<T> rerooting(std::vector<std::vector<S>> G, T (*merge)(T, T),
+                         T (*add_root)(T, S), T e) {
   int n = G.size();
   std::vector<T> down(n, e), up(n, e), res(n, e);
 
