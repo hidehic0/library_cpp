@@ -7,3 +7,5 @@ bool coordinate_check(int x, int w, int H, int W) {
 
 constexpr std::array<std::pair<int, int>, 4> MOVES1 = {
     {{0, 1}, {1, 0}, {-1, 0}, {0, -1}}};
+constexpr std::array<std::pair<int, int>, 8> MOVES2 = {
+    {{0, 1}, {1, 0}, {-1, 0}, {0, -1}, {1, 1}, {-1, -1}, {1, -1}, {-1, 1}}};
