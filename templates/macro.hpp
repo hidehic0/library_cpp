@@ -61,6 +61,7 @@ template <typename T> inline T mod_pow(T a, T n, T mod) {
 
   return res;
 }
+template <typename T> inline T minus_mod(T a, T b) { return ((a % b) + b) % b; }
 
 template <typename T> void apply_vec(std::vector<T> &v, T (*fn)(T)) {
   for (int i = 0; i < v.size(); i++)
