@@ -2,10 +2,15 @@
 #include <iostream>
 #include <vector>
 
-#define rep(i, n) for (int i = 0; i < (int)(n); i++)
-#define rrep(i, n) for (int i = n - 1; i >= 0; i--)
+// 引数の長さで内容が変わるrep 参考: https://trap.jp/post/1224
+#define overload4(a, b, c, d, ...) d
+#define _rep(i, n) for (int i = 0; i < (int)(n); i++)
 #define REP(i, a, b) for (int i = (int)(a); i < (int)(b); ++i)
+#define rep(...) overload4(__VA_ARGS__, REP, _rep)(__VA_ARGS__)
+#define _rrep(i, n) for (int i = n - 1; i >= 0; i--)
 #define RREP(i, a, b) for (int i = (int)(b - 1); i >= (int)(a); i--)
+#define rrep(...) overload4(__VA_ARGS__, RREP, _rrep)(__VA_ARGS__)
+
 #define all(a) (a).begin(), (a).end()
 
 template <typename T> bool chmin(T &a, T b) {
