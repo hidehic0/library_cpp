@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-template <typename T> using VC = std::vector<T>;
+template <class T> using VC = std::vector<T>;
 using ll = long long;
 using ld = long double;
 using pii = std::pair<ll, ll>;
