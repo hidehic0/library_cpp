@@ -49,6 +49,19 @@ std::ostream &operator<<(std::ostream &os, const std::vector<T> &v) {
   return os;
 }
 
+// pythonのprintライクな関数 参考:
+// https://nyaannyaan.github.io/library/template/inout.hpp
+inline void out() { std::cout << std::endl; }
+template <typename T, typename... U, char sep = ' '>
+void out(const T &t, const U &...u) {
+  std::cout << t;
+
+  if (sizeof...(u))
+    std::cout << sep;
+
+  out(u...);
+}
+
 template <typename T> inline T ceil_div(T a, T b) { return (a + b - 1) / b; }
 template <typename T> inline T mod_pow(T a, T n, T mod) {
   T res = 1;
