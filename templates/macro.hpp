@@ -62,6 +62,13 @@ void out(const T &t, const U &...u) {
   out(u...);
 }
 
+// cinの短縮関数 参考: https://nyaannyaan.github.io/library/template/inout.hpp
+inline void in() {}
+template <typename T, class... U> void in(T &t, U &...u) {
+  std::cin >> t;
+  in(u...);
+}
+
 template <typename T> inline T ceil_div(T a, T b) { return (a + b - 1) / b; }
 template <typename T> inline T mod_pow(T a, T n, T mod) {
   T res = 1;
