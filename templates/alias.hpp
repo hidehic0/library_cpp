@@ -1,10 +1,13 @@
 #pragma once
 #include <map>
+#include <queue>
 #include <set>
 #include <string>
 #include <vector>
 
 template <class T> using VC = std::vector<T>;
+template <class T>
+using rpriority_queue = std::priority_queue<T, VC<T>, std::greater<T>>;
 using ll = long long;
 using ld = long double;
 using pii = std::pair<ll, ll>;
