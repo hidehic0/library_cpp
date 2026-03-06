@@ -16,7 +16,7 @@ template <class T> struct Fact {
   std::vector<T> F, FINV;
   int _n;
 
-  Fact(int n) : F(n + 1, 1), FINV(n + 1, 0), _n(n) {
+  Fact(int n) : F(n + 1, 1), FINV(n + 1, 1), _n(n) {
     rep(i, 1, n + 1) {
       F[i] = F[i - 1] * (T)i;
       FINV[i] = (T)1 / F[i];
@@ -34,5 +34,13 @@ template <class T> struct Fact {
     assert(0 <= i && i <= _n);
     return FINV[i];
   }
-  T nCr(int n, int k) { return F[n] * F[n - k] * F[k]; }
+  T nCr(int n, int k) {
+    if (k == 0) {
+      return (T)1;
+    }
+    if (n < k)
+      return (T)0;
+
+    return F[n] * FINV[n - k] * FINV[k];
+  }
 };
