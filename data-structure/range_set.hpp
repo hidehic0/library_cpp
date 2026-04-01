@@ -8,14 +8,14 @@
 #include <utility>
 
 struct RangeSet {
-  std::set<std::pair<int, int>> s;
+  spii s;
 
   RangeSet() {
-    s.emplace(INT_MIN, INT_MIN);
-    s.emplace(INT_MAX, INT_MAX);
+    s.emplace(LONG_LONG_MIN, LONG_LONG_MIN);
+    s.emplace(LONG_LONG_MAX, LONG_LONG_MAX);
   }
 
-  bool insert(int x) {
+  bool insert(ll x) {
     auto it = s.lower_bound({x + 1, x + 1});
     auto prev_it = std::prev(it);
 
@@ -26,7 +26,7 @@ struct RangeSet {
       return false;
     }
 
-    int al = x, ar = x;
+    ll al = x, ar = x;
 
     if (r == x - 1) {
       al = l;
@@ -43,7 +43,7 @@ struct RangeSet {
   }
 
   // verify: https://atcoder.jp/contests/abc435/submissions/74579141
-  void insert_range(int l, int r) {
+  void insert_range(ll l, ll r) {
     assert(l <= r);
     auto it = std::prev(s.lower_bound({l, l}));
 
@@ -69,7 +69,7 @@ struct RangeSet {
     s.emplace(nl, nr);
   }
 
-  void erase(int x) {
+  void erase(ll x) {
     auto it = std::prev(s.lower_bound({x + 1, x + 1}));
     auto [l, r] = *it;
 
@@ -88,7 +88,7 @@ struct RangeSet {
     }
   }
 
-  int mex(int x = 0) {
+  ll mex(ll x = 0) {
     auto [l, r] = *std::prev(s.lower_bound(std::make_pair(x + 1, x + 1)));
 
     if (l <= x && x <= r) {
