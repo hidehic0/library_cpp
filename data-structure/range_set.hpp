@@ -1,16 +1,15 @@
 #pragma once
+#include "templates/alias.hpp"
+#include "templates/macro.hpp"
 #include <cassert>
 #include <climits>
 #include <iterator>
 #include <set>
 #include <utility>
-#include <vector>
 
 struct RangeSet {
-private:
   std::set<std::pair<int, int>> s;
 
-public:
   RangeSet() {
     s.emplace(INT_MIN, INT_MIN);
     s.emplace(INT_MAX, INT_MAX);
@@ -43,55 +42,31 @@ public:
     return true;
   }
 
+  // verify: https://atcoder.jp/contests/abc435/submissions/74579141
   void insert_range(int l, int r) {
     assert(l <= r);
-    auto it = prev(s.lower_bound(std::make_pair(l + 1, l + 1)));
-    if (it->second)
-      it++;
+    auto it = std::prev(s.lower_bound({l, l}));
 
-    // 重複要素を消す
-    int nl = l, nr = r;
-    std::vector<std::pair<int, int>> T;
-
-    while (it->first <= r) {
-      int tl, tr;
-      std::tie(tl, tr) = *it;
-
-      if (tl <= l) {
-        nl = tl;
-      }
-      if (tr >= r)
-        nr = tr;
-
-      T.emplace_back(*it);
+    if (it->second < l) {
       it++;
     }
 
-    for (auto [tl, tr] : T)
-      s.erase(std::make_pair(tl, tr));
+    auto nit = it;
+
+    VC<pii> D;
+    ll nl = l, nr = r;
+
+    while (nit != s.end() && nit->first <= r) {
+      D.emplace_back(*nit);
+      chmin(nl, (ll)nit->first), chmax(nr, (ll)nit->second);
+
+      nit++;
+    }
+
+    for (auto [dl, dr] : D)
+      s.erase({dl, dr});
 
     s.emplace(nl, nr);
-
-    // 隣接要素を削除
-    it = s.lower_bound(std::make_pair(nl, nl));
-
-    if (prev(it)->second + 1 == nl) {
-      int tmp = nl;
-      nl = prev(it)->first;
-      s.erase(*prev(it));
-      s.erase(std::make_pair(tmp, nr));
-      s.emplace(nl, nr);
-    }
-
-    it = s.lower_bound(std::make_pair(nl, nl));
-
-    if (nr + 1 == next(it)->first) {
-      int tmp = nr;
-      nr = next(it)->second;
-      s.erase(*next(it));
-      s.erase(std::make_pair(nl, tmp));
-      s.emplace(nl, nr);
-    }
   }
 
   void erase(int x) {
