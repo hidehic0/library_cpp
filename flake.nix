@@ -14,7 +14,10 @@
         }:
         {
           devShells.default = pkgs.mkShell {
-            packages = with pkgs; [ gcc15 ];
+            packages = with pkgs; [
+              gcc15
+              ac-library
+            ];
           };
         };
       systems = [
