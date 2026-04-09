@@ -38,6 +38,7 @@ jobs:
             flake.nix
             flake.lock
             LICENSE
+            all.h
           # If you have config.toml
           # config: .verify-helper/config.toml
       - name: parse-doxygen
