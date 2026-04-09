@@ -1,9 +1,6 @@
 #include <atcoder/all>
 #include <bits/stdc++.h>
 
-using namespace std;
-using namespace atcoder;
-
 #ifdef ONLINE_JUDGE
 #define dump(...)
 #define CPP_DUMP_SET_OPTION(...)
