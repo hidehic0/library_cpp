@@ -20,6 +20,7 @@
 #include "grid/template.hpp"
 
 #include "utils/compress.hpp"
+#include "utils/factorial.hpp"
 
 #include "data-structure/range_set.hpp"
 #include "data-structure/unionfind.hpp"
