@@ -43,4 +43,13 @@ template <class T> struct Fact {
 
     return F[n] * FINV[n - k] * FINV[k];
   }
+  T nPr(int n, int k) {
+    if (k == 0) {
+      return (T)1;
+    }
+    if (n < k)
+      return (T)0;
+
+    return F[n] * FINV[n - k];
+  }
 };
