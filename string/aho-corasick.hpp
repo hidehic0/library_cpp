@@ -95,7 +95,7 @@ struct AhoCorasick : Trie<char_size + 1, margin> {
 
 /*!
  * @file string/aho-corasick.hpp
- * @brief AhoCorasick構造体が置いてある
+ * @brief AhoCorasick法
  * @auther hidehic0
  * @date 2026-05-19
  */

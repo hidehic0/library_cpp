@@ -54,6 +54,6 @@ template <size_t char_size = 26, char margin = 'a'> struct Trie {
 
 /*!
  * @file string/trie.hpp
- * @brief trie木のstructが置いてある
+ * @brief Trie Tree
  * @auther hidehic0
  */
