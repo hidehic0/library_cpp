@@ -2,20 +2,21 @@
 #include <bits/stdc++.h>
 
 template <class T, auto add, auto op, auto e, auto id> struct Matrix {
-  static_assert(std::is_convertible_v<decltype(op), std::function<T(T, T)>>,
+  static_assert(std::is_invocable_r_v<T, decltype(op), T, T>,
                 "op must work as T(T, T)");
-  static_assert(std::is_convertible_v<decltype(add), std::function<T(T, T)>>,
+
+  static_assert(std::is_invocable_r_v<T, decltype(add), T, T>,
                 "add must work as T(T, T)");
-  static_assert(std::is_convertible_v<decltype(e), std::function<T()>>,
-                "e must work as T()");
-  static_assert(std::is_convertible_v<decltype(id), std::function<T()>>,
-                "id must work as T()");
+
+  static_assert(std::is_invocable_r_v<T, decltype(e)>, "e must work as T()");
+
+  static_assert(std::is_invocable_r_v<T, decltype(id)>, "id must work as T()");
 
   std::vector<std::vector<T>> A;
 
   Matrix() = default;
-  Matrix(int n) : A(n, vector<T>(n, e())) {}
-  Matrix(int n, int m) : A(n, vector<T>(m, e())) {}
+  Matrix(int n) : A(n, std::vector<T>(n, e())) {}
+  Matrix(int n, int m) : A(n, std::vector<T>(m, e())) {}
   Matrix(std::vector<std::vector<T>> A) : A(A) {}
 
   const inline std::vector<T> &operator[](int k) const { return A[k]; };
