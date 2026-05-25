@@ -2,8 +2,8 @@
 
 #include <bits/stdc++.h>
 
-#include "../templates/alias.hpp"
-#include "../templates/macro.hpp"
+#include "templates/alias.hpp"
+#include "templates/macro.hpp"
 
 template <std::integral T> struct LcaWithDoubling {
   VC<VC<T>> G, P;

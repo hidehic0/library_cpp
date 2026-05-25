@@ -3,10 +3,10 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#include "../tree/lca.hpp"
+#include "tree/lca.hpp"
 
-#include "../templates/alias.hpp"
-#include "../templates/macro.hpp"
+#include "templates/alias.hpp"
+#include "templates/macro.hpp"
 
 int main() {
   ll N, Q;
