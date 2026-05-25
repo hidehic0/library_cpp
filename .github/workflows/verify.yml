@@ -23,13 +23,13 @@ jobs:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
 
       - name: Set up competitive-verifier
-        uses: competitive-verifier/actions/setup@af681adfd1e9bd6588e56e1a83c5ca78087fb872 # v2.0.4
+        uses: competitive-verifier/actions/setup@f73bf3d0365949089e9ed1fc530322720b5cf3a7 # v2.1.0
         with:
           cache-pip: true
 
       # Initialize your own environment for resolving.
       - name: oj-resolve
-        uses: competitive-verifier/actions/oj-resolve@af681adfd1e9bd6588e56e1a83c5ca78087fb872 # v2.0.4
+        uses: competitive-verifier/actions/oj-resolve@f73bf3d0365949089e9ed1fc530322720b5cf3a7 # v2.1.0
         with:
           output-path: verify_files.json
           # Specify patterns
@@ -42,12 +42,12 @@ jobs:
           # If you have config.toml
           # config: .verify-helper/config.toml
       - name: parse-doxygen
-        uses: competitive-verifier/actions/parse-doxygen@af681adfd1e9bd6588e56e1a83c5ca78087fb872 # v2.0.4
+        uses: competitive-verifier/actions/parse-doxygen@f73bf3d0365949089e9ed1fc530322720b5cf3a7 # v2.1.0
         with:
           verify-files: verify_files.json
 
       - name: Upload verify_files.json
-        uses: competitive-verifier/actions/upload-verify-artifact@af681adfd1e9bd6588e56e1a83c5ca78087fb872 # v2.0.4
+        uses: competitive-verifier/actions/upload-verify-artifact@f73bf3d0365949089e9ed1fc530322720b5cf3a7 # v2.1.0
         with:
           file: verify_files.json
 
@@ -78,15 +78,15 @@ jobs:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
 
       - name: Download verify_files.json
-        uses: competitive-verifier/actions/download-verify-artifact@af681adfd1e9bd6588e56e1a83c5ca78087fb872 # v2.0.4
+        uses: competitive-verifier/actions/download-verify-artifact@f73bf3d0365949089e9ed1fc530322720b5cf3a7 # v2.1.0
 
       - name: Set up competitive-verifier
-        uses: competitive-verifier/actions/setup@af681adfd1e9bd6588e56e1a83c5ca78087fb872 # v2.0.4
+        uses: competitive-verifier/actions/setup@f73bf3d0365949089e9ed1fc530322720b5cf3a7 # v2.1.0
         with:
           cache-pip: true
 
       - name: Verify
-        uses: competitive-verifier/actions/verify@af681adfd1e9bd6588e56e1a83c5ca78087fb872 # v2.0.4
+        uses: competitive-verifier/actions/verify@f73bf3d0365949089e9ed1fc530322720b5cf3a7 # v2.1.0
         with:
           destination: ${{runner.temp}}/result.json
           split-size: ${{ env.SPLIT_SIZE }}
@@ -114,7 +114,7 @@ jobs:
 
       - name: Download verify_files.json and all artifacts
         id: all-artifacts
-        uses: competitive-verifier/actions/download-verify-artifact@af681adfd1e9bd6588e56e1a83c5ca78087fb872 # v2.0.4
+        uses: competitive-verifier/actions/download-verify-artifact@f73bf3d0365949089e9ed1fc530322720b5cf3a7 # v2.1.0
         with:
           download-all: true
           artifact-root: .artifacts/
@@ -133,12 +133,12 @@ jobs:
           SRCDIR: .artifacts/Bundled-${{ runner.os }}
 
       - name: Set up competitive-verifier
-        uses: competitive-verifier/actions/setup@af681adfd1e9bd6588e56e1a83c5ca78087fb872 # v2.0.4
+        uses: competitive-verifier/actions/setup@f73bf3d0365949089e9ed1fc530322720b5cf3a7 # v2.1.0
         with:
           cache-pip: true
 
       - name: Docs
-        uses: competitive-verifier/actions/docs@af681adfd1e9bd6588e56e1a83c5ca78087fb872 # v2.0.4
+        uses: competitive-verifier/actions/docs@f73bf3d0365949089e9ed1fc530322720b5cf3a7 # v2.1.0
         with:
           verify-result: ${{ steps.all-artifacts.outputs.artifacts-root }}/Result-*/result.json
           destination: _jekyll
@@ -158,7 +158,7 @@ jobs:
           path: _site
 
       - name: Check
-        uses: competitive-verifier/actions/check@af681adfd1e9bd6588e56e1a83c5ca78087fb872 # v2.0.4
+        uses: competitive-verifier/actions/check@f73bf3d0365949089e9ed1fc530322720b5cf3a7 # v2.1.0
         with:
           verify-result: ${{ steps.all-artifacts.outputs.artifacts-root }}/Result-*/result.json
   deploy:
