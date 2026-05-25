@@ -38,3 +38,5 @@
 #include "data-structure/unionfind.hpp"
 
 #include "matrix/matrix.hpp"
+
+#include "tree/lca.hpp"
