@@ -17,7 +17,12 @@
             packages = with pkgs; [
               gcc15
               ac-library
+              uv
             ];
+            shellHook = ''
+              source .venv/bin/activate
+              export ZIG_GLOBAL_CACHE_DIR=/tmp
+            '';
           };
         };
       systems = [
