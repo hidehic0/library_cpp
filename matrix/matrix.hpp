@@ -37,7 +37,6 @@ template <class T, auto add, auto op, auto e, auto id> struct Matrix {
     int p = A[0].size();
 
     assert(n == B.A.size());
-    assert(p == m);
     std::vector<std::vector<T>> C(n, std::vector<T>(m, e()));
 
     for (int i = 0; i < n; i++) {
