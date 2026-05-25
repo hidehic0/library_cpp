@@ -22,10 +22,13 @@ jobs:
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
-      - name: Set up competitive-verifier
-        uses: competitive-verifier/actions/setup@f73bf3d0365949089e9ed1fc530322720b5cf3a7 # v2.1.0
+      - name: Install uv
+        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
         with:
-          cache-pip: true
+          enable-cache: true
+
+      - name: Install competitive-verifier
+        run: uv tool install competitive-verifier
 
       # Initialize your own environment for resolving.
       - name: oj-resolve
@@ -81,10 +84,13 @@ jobs:
       - name: Download verify_files.json
         uses: competitive-verifier/actions/download-verify-artifact@f73bf3d0365949089e9ed1fc530322720b5cf3a7 # v2.1.0
 
-      - name: Set up competitive-verifier
-        uses: competitive-verifier/actions/setup@f73bf3d0365949089e9ed1fc530322720b5cf3a7 # v2.1.0
+      - name: Install uv
+        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
         with:
-          cache-pip: true
+          enable-cache: true
+
+      - name: Install competitive-verifier
+        run: uv tool install competitive-verifier
 
       - name: Verify
         uses: competitive-verifier/actions/verify@f73bf3d0365949089e9ed1fc530322720b5cf3a7 # v2.1.0
@@ -133,10 +139,13 @@ jobs:
         env:
           SRCDIR: .artifacts/Bundled-${{ runner.os }}
 
-      - name: Set up competitive-verifier
-        uses: competitive-verifier/actions/setup@f73bf3d0365949089e9ed1fc530322720b5cf3a7 # v2.1.0
+      - name: Install uv
+        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
         with:
-          cache-pip: true
+          enable-cache: true
+
+      - name: Install competitive-verifier
+        run: uv tool install competitive-verifier
 
       - name: Docs
         uses: competitive-verifier/actions/docs@f73bf3d0365949089e9ed1fc530322720b5cf3a7 # v2.1.0
