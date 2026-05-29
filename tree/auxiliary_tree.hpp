@@ -27,7 +27,7 @@ template <std::integral T> struct AuxiliaryTree {
 
   /**
    * @fn build
-   * @brief AuxiliaryTreeを構築します
+   * AuxiliaryTreeを構築します
    * @param V 頂点のリスト 後で補助に使われた頂点も追加される
    */
   T build(std::vector<T> &V, std::vector<std::vector<T>> &G) {
