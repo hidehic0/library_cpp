@@ -1,7 +1,7 @@
 #pragma once
 #include <bits/stdc++.h>
 
-template <typename Tp, class Comp = std::less<Tp>> struct CartesianTree {
+template <class Tp, class Comp = std::less<Tp>> struct CartesianTree {
   int root, n;
   std::vector<int> par, left, right;
 
