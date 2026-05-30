@@ -10,7 +10,7 @@ template <std::integral T> struct LcaWithDoubling {
   VC<T> D;
   T N, K;
 
-  LcaWithDoubling(VC<VC<T>> G, T st = 0) : G{G}, N{G.size()} {
+  LcaWithDoubling(VC<VC<T>> G, T st = 0) : G{G}, N{static_cast<int>(G.size())} {
     assert(N > 0);
     assert(st < N);
 

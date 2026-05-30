@@ -33,7 +33,7 @@ template <std::integral T> struct AuxiliaryTree {
   T build(std::vector<T> &V, std::vector<std::vector<T>> &G) {
     int m = V.size();
 
-    assert(n == G.size());
+    assert(n == static_cast<int>(G.size()));
     assert(m > 0);
 
     std::ranges::sort(V, [&](int a, int b) { return order[a] < order[b]; });
@@ -62,7 +62,7 @@ template <std::integral T> struct AuxiliaryTree {
       st.emplace_back(V[i + 1]);
     }
 
-    for (int i = 0; i < st.size() - 1; i++) {
+    for (int i = 0; i + 1 < static_cast<int>(st.size()); i++) {
       G[st[i]].emplace_back(st[i + 1]);
     }
 
