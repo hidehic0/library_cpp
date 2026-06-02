@@ -93,7 +93,7 @@ wheels = [
 
 [[package]]
 name = "competitive-verifier"
-version = "4.1.1"
+version = "4.1.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "appdirs" },
@@ -105,18 +105,18 @@ dependencies = [
     { name = "pyyaml" },
     { name = "requests" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/dc/76/48bfa0311cde5280769c24fba80ecdd8ec3bbd3f88e73e84573accc0d8e2/competitive_verifier-4.1.1.tar.gz", hash = "sha256:1294ad8a437876ad14fc7680e3619d37f9c3393920492b9505f70caaf3c57eb7", size = 135397, upload-time = "2026-04-14T17:43:45.133Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/56/06/ec1d687d6395ef37b7640ec53fd8f2f42c91dc4d0927613df15ba178ba93/competitive_verifier-4.1.2.tar.gz", hash = "sha256:55fd2d3298b18246bcd6b1bb00245d6379755b932d172a242c464a5e48f6da76", size = 135371, upload-time = "2026-06-01T17:18:24.959Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/44/b2/6fadf9cfb9973ed283ef1443aedc1da1ace036e49cb9424d3cf6c7697665/competitive_verifier-4.1.1-py3-none-any.whl", hash = "sha256:9ea07e9c0374e81c8c9f9162e1d5ce84ed5f7d3038fee3b593d13791ebb07deb", size = 100203, upload-time = "2026-04-14T17:43:46.297Z" },
+    { url = "https://files.pythonhosted.org/packages/68/1c/4f39e1093e207af8c71867d73e279b46ad45dcb5e61f9901f941105013c1/competitive_verifier-4.1.2-py3-none-any.whl", hash = "sha256:b4ac066cf9b70ce572d662e7b733cfd76bf320d7006ae42ec40b989e10855fcd", size = 100180, upload-time = "2026-06-01T17:18:26.093Z" },
 ]
 
 [[package]]
 name = "idna"
-version = "3.16"
+version = "3.17"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/1a/88/bcf9709822fe69d02c2a6a77956c98ce6ea8ca8767a9aadcedc7eb6a2390/idna-3.16.tar.gz", hash = "sha256:d7a6da03db833450fca25d2358ac9ff06cd624577a4aea3a596d5c0f77b8e03d", size = 203770, upload-time = "2026-05-22T00:16:18.781Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/b9/28/99c51f664567218d824af024c0251650fb27e4ca066df188dab0769c5b91/idna-3.17.tar.gz", hash = "sha256:5eb0cb53bc467c12eadcf6de83163ad8527cec9416f44b9b61b19caedad2b87f", size = 196048, upload-time = "2026-05-28T14:32:38.55Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/94/16/70255075a9859a0e3adb789b68ceb0e210dec03934245fd98d248226572f/idna-3.16-py3-none-any.whl", hash = "sha256:cc246e3a3f89580c3a951b5ad298ca4638078b2cdd4f115654332b5c26daded5", size = 74165, upload-time = "2026-05-22T00:16:16.698Z" },
+    { url = "https://files.pythonhosted.org/packages/de/a7/f76514cc40ad6234098ecdebda08732d75964776c51a42845b7da10649e2/idna-3.17-py3-none-any.whl", hash = "sha256:466e48829084efe2548012b855df21540b96f2e20e51bd124c851536556a592c", size = 65316, upload-time = "2026-05-28T14:32:37.035Z" },
 ]
 
 [[package]]
