@@ -93,7 +93,7 @@ template <typename T> void apply_vec(std::vector<T> &v, T (*fn)(T)) {
     v[i] = fn(v[i]);
 }
 
-template <typename T> struct Top2 {
+template <typename T, class Comp> struct Top2 {
   T a, b;
 
   Top2() {}
@@ -101,22 +101,31 @@ template <typename T> struct Top2 {
   Top2(T a, T b) : a(a), b(b) {}
 
   void add(const T &v) {
-    if (v < a)
+    if (Comp{}(v, a))
       b = a, a = v;
-    else if (v < b)
+    else if (Comp{}(v, b))
       b = v;
   }
 
-  friend Top2<T> operator*(const Top2<T> &lhs, const Top2<T> &rhs) {
+  friend Top2<T, Comp> operator*(const Top2<T, Comp> &lhs,
+                                 const Top2<T, Comp> &rhs) {
     auto n = lhs;
     n.add(rhs.a), n.add(rhs.b);
 
     return n;
   }
 
-  Top2<T> &operator*=(const Top2<T> &rhs) {
+  Top2<T, Comp> &operator*=(const Top2<T, Comp> &rhs) {
     (*this) = (*this) * rhs;
 
     return *this;
   }
+};
+
+template <typename T> struct TopMin2 : public Top2<T, std::less<T>> {
+  using Top2<T, std::less<T>>::Top2;
+};
+
+template <typename T> struct TopMax2 : public Top2<T, std::greater<T>> {
+  using Top2<T, std::greater<T>>::Top2;
 };
