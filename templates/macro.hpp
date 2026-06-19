@@ -92,3 +92,31 @@ template <typename T> void apply_vec(std::vector<T> &v, T (*fn)(T)) {
   for (int i = 0; i < v.size(); i++)
     v[i] = fn(v[i]);
 }
+
+template <typename T> struct Top2 {
+  T a, b;
+
+  Top2() {}
+  Top2(T a) : a(a) {}
+  Top2(T a, T b) : a(a), b(b) {}
+
+  void add(const T &v) {
+    if (v < a)
+      b = a, a = v;
+    else if (v < b)
+      b = v;
+  }
+
+  friend Top2<T> operator*(const Top2<T> &lhs, const Top2<T> &rhs) {
+    auto n = lhs;
+    n.add(rhs.a), n.add(rhs.b);
+
+    return n;
+  }
+
+  Top2<T> &operator*=(const Top2<T> &rhs) {
+    (*this) = (*this) * rhs;
+
+    return *this;
+  }
+};
