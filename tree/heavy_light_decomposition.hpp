@@ -28,7 +28,7 @@ public:
   }
 
   template <typename S>
-  S query(T u, T v, const auto &e, const auto &q, const auto &op,
+  S query(T u, T v, const auto &e, const auto &prod, const auto &op,
           bool edge = false) {
     assert(0 <= u && u < n && 0 <= v && v < n);
 
@@ -36,7 +36,7 @@ public:
                   "op must work as S(S, S)");
     static_assert(std::is_convertible_v<decltype(e), std::function<S()>>,
                   "e must work as S()");
-    static_assert(std::is_convertible_v<decltype(q), std::function<S(T, T)>>,
+    static_assert(std::is_convertible_v<decltype(prod), std::function<S(T, T)>>,
                   "q must work as S(T, T)");
 
     S l = e(), r = e();
@@ -47,10 +47,10 @@ public:
       if (head[u] == head[v])
         break;
 
-      l = op(q(in[head[u]], in[u] + 1), l);
+      l = op(prod(in[head[u]], in[u] + 1), l);
     }
 
-    return op(op(q(in[v] + edge, in[u] + 1), l), r);
+    return op(op(prod(in[v] + edge, in[u] + 1), l), r);
   }
 
 private:
