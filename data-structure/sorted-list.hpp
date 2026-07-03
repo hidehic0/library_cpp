@@ -14,10 +14,13 @@ public:
     root = merge(merge(l, node), r);
   }
   void erase(const T &x) {
-    if (!contains(x))
-      return;
-
     auto [left, right] = split_by_key(root, x);
+
+    if (!right || get(right, 0) != x) {
+      root = merge(left, right);
+      return;
+    }
+
     auto y = split_by_size(right, 1);
 
     delete y.first;
