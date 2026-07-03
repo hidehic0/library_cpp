@@ -3,17 +3,17 @@
 
 #include "utils/xorshift.hpp"
 
-struct SortedList {
+template <class T> struct SortedList {
 public:
   SortedList() : rnd(), root(nullptr) {}
 
-  void insert(int x) {
+  void insert(const T &x) {
     auto [l, r] = split_by_key(root, x);
 
     auto node = new Node{x};
     root = merge(merge(l, node), r);
   }
-  void erase(int x) {
+  void erase(const T &x) {
     if (!contains(x))
       return;
 
@@ -38,15 +38,15 @@ public:
     root = merge(x.first, y.second);
   }
 
-  inline int operator[](int n) { return get(root, n); }
+  inline T operator[](int n) { return get(root, n); }
 
   inline int size() { return sub_size(root); }
   inline bool empty() { return root == nullptr; }
 
-  inline int bisect_left(int x) { return bisect_left(root, x); }
-  inline int bisect_right(int x) { return bisect_right(root, x); }
+  inline int bisect_left(const T &x) { return bisect_left(root, x); }
+  inline int bisect_right(const T &x) { return bisect_right(root, x); }
 
-  bool contains(int x) {
+  bool contains(const T &x) {
     int i = bisect_left(x);
     return i < size() && (*this)[i] == x;
   }
@@ -60,12 +60,12 @@ private:
   node_ptr root;
 
   struct Node {
-    int key;
+    T key;
     int sub_size;
 
     node_ptr left, right;
 
-    Node(int k) : key(k), sub_size(1), left(nullptr), right(nullptr) {};
+    Node(const T &k) : key(k), sub_size(1), left(nullptr), right(nullptr) {};
   };
 
   inline int sub_size(node_ptr node) { return (!node ? 0 : node->sub_size); }
@@ -90,7 +90,7 @@ private:
     }
   }
 
-  std::pair<node_ptr, node_ptr> split_by_key(node_ptr node, int key) {
+  std::pair<node_ptr, node_ptr> split_by_key(node_ptr node, const T &key) {
     if (!node)
       return {nullptr, nullptr};
 
@@ -129,7 +129,7 @@ private:
     }
   }
 
-  int get(node_ptr node, int n) {
+  T get(node_ptr node, int n) {
     assert(0 <= n && n < sub_size(node));
 
     if (sub_size(node->left) == n)
@@ -141,7 +141,7 @@ private:
     }
   }
 
-  int bisect_left(node_ptr node, int x) {
+  int bisect_left(node_ptr node, const T &x) {
     if (!node)
       return 0;
 
@@ -151,7 +151,7 @@ private:
       return sub_size(node->left) + 1 + bisect_left(node->right, x);
     }
   }
-  int bisect_right(node_ptr node, int x) {
+  int bisect_right(node_ptr node, const T &x) {
     if (!node)
       return 0;
 

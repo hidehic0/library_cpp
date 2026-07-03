@@ -14,7 +14,7 @@ int main() {
   vi A(N);
   in(A);
 
-  SortedList S;
+  SortedList<int> S;
 
   for (auto a : A)
     S.insert(a);
