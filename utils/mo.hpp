@@ -5,13 +5,14 @@
 #include <functional>
 #include <iostream>
 #include <numeric>
+#include <type_traits>
 #include <vector>
 
 namespace hidehic0_internal {
-template <typename T>
+template <class T>
 concept MoQuery = requires(T t) {
-  { t.l } -> std::integral;
-  { t.r } -> std::integral;
+  requires std::integral<std::remove_cvref_t<decltype(t.l)>>;
+  requires std::integral<std::remove_cvref_t<decltype(t.r)>>;
 };
 } // namespace hidehic0_internal
 
