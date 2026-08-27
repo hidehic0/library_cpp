@@ -21,7 +21,7 @@ c++で書いて指示されたライブラリを用いて書いてください
 
 コンパイルコマンドは
 ```
-g++ [filename] -I[repoのroot] -Wall
+g++ [filename] -I[repoのroot] -Wall -std=gnu++23
 ```
 としてください
 
