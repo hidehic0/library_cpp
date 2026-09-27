@@ -29,9 +29,9 @@ std::vector<T> offline_lca(const std::vector<std::vector<T>> &G,
   std::stack<int> S;
   S.emplace(root);
 
-  auto it = std::views::iota(0, static_cast<int>(G.size())) |
-            std::views::transform([&](int x) { return G[x].size(); }) |
-            std::ranges::to<std::vector<int>>();
+  std::vector<int> it(G.size());
+  for (int i = 0; i < static_cast<int>(G.size()); i++)
+    it[i] = G[i].size();
 
   std::vector<int> anc(G.size(), -1);
 
