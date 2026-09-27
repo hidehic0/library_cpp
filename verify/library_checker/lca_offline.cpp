@@ -1,4 +1,4 @@
-// competitive-verifier: PROBLEM https://judge.yosupo.jp/problem/lca
+#define PROBLEM "https://judge.yosupo.jp/problem/lca"
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -27,5 +27,6 @@ int main() {
     queries[i] = {u, v};
   }
 
-  for (int ans : offline_lca(G, queries)) cout << ans << '\n';
+  for (int ans : offline_lca(G, queries))
+    cout << ans << '\n';
 }
