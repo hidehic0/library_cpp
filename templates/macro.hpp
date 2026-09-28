@@ -132,8 +132,8 @@ template <typename T> struct TopMax2 : public Top2<T, std::greater<T>> {
 template <class T>
 std::vector<int> ordinal_compression(const std::vector<T> &v) {
   std::vector<int> order(v.size()), res(v.size());
-  std::ranges::iota(order, 0),
-      std::ranges::sort(order, [&](int a, int b) { return v[a] < v[b]; });
+  std::iota(all(order), 0);
+  std::sort(all(order), [&](int a, int b) { return v[a] < v[b]; });
 
   for (size_t i = 0; i < v.size(); i++)
     res[order[i]] = i;
