@@ -32,7 +32,7 @@ jobs:
 
       # Initialize your own environment for resolving.
       - name: oj-resolve
-        uses: competitive-verifier/actions/oj-resolve@f73bf3d0365949089e9ed1fc530322720b5cf3a7 # v2.1.0
+        uses: competitive-verifier/actions/oj-resolve@3286d8e43b3b38c97f13eea074ae64e367083ebb # v2.1.1
         with:
           config: config.toml
           output-path: verify_files.json
@@ -46,12 +46,12 @@ jobs:
           # If you have config.toml
           # config: .verify-helper/config.toml
       - name: parse-doxygen
-        uses: competitive-verifier/actions/parse-doxygen@f73bf3d0365949089e9ed1fc530322720b5cf3a7 # v2.1.0
+        uses: competitive-verifier/actions/parse-doxygen@3286d8e43b3b38c97f13eea074ae64e367083ebb # v2.1.1
         with:
           verify-files: verify_files.json
 
       - name: Upload verify_files.json
-        uses: competitive-verifier/actions/upload-verify-artifact@f73bf3d0365949089e9ed1fc530322720b5cf3a7 # v2.1.0
+        uses: competitive-verifier/actions/upload-verify-artifact@3286d8e43b3b38c97f13eea074ae64e367083ebb # v2.1.1
         with:
           file: verify_files.json
 
@@ -82,7 +82,7 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Download verify_files.json
-        uses: competitive-verifier/actions/download-verify-artifact@f73bf3d0365949089e9ed1fc530322720b5cf3a7 # v2.1.0
+        uses: competitive-verifier/actions/download-verify-artifact@3286d8e43b3b38c97f13eea074ae64e367083ebb # v2.1.1
 
       - name: Install uv
         uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7 # v10.2.0
@@ -93,7 +93,7 @@ jobs:
         run: uv tool install --python 3.14 competitive-verifier
 
       - name: Verify
-        uses: competitive-verifier/actions/verify@f73bf3d0365949089e9ed1fc530322720b5cf3a7 # v2.1.0
+        uses: competitive-verifier/actions/verify@3286d8e43b3b38c97f13eea074ae64e367083ebb # v2.1.1
         with:
           destination: ${{runner.temp}}/result.json
           split-size: ${{ env.SPLIT_SIZE }}
@@ -121,7 +121,7 @@ jobs:
 
       - name: Download verify_files.json and all artifacts
         id: all-artifacts
-        uses: competitive-verifier/actions/download-verify-artifact@f73bf3d0365949089e9ed1fc530322720b5cf3a7 # v2.1.0
+        uses: competitive-verifier/actions/download-verify-artifact@3286d8e43b3b38c97f13eea074ae64e367083ebb # v2.1.1
         with:
           download-all: true
           artifact-root: .artifacts/
@@ -148,7 +148,7 @@ jobs:
         run: uv tool install --python 3.14 competitive-verifier
 
       - name: Docs
-        uses: competitive-verifier/actions/docs@f73bf3d0365949089e9ed1fc530322720b5cf3a7 # v2.1.0
+        uses: competitive-verifier/actions/docs@3286d8e43b3b38c97f13eea074ae64e367083ebb # v2.1.1
         with:
           verify-result: ${{ steps.all-artifacts.outputs.artifacts-root }}/Result-*/result.json
           destination: _jekyll
@@ -168,7 +168,7 @@ jobs:
           path: _site
 
       - name: Check
-        uses: competitive-verifier/actions/check@f73bf3d0365949089e9ed1fc530322720b5cf3a7 # v2.1.0
+        uses: competitive-verifier/actions/check@3286d8e43b3b38c97f13eea074ae64e367083ebb # v2.1.1
         with:
           verify-result: ${{ steps.all-artifacts.outputs.artifacts-root }}/Result-*/result.json
   deploy:
