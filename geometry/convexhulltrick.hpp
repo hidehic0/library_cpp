@@ -25,7 +25,7 @@ private:
     if (ismax)
       return a <= b;
     else
-      return a >= b;
+      return a <= b;
   }
 
   bool check_with_x(std::pair<T, T> f1, std::pair<T, T> f2, T x) {
