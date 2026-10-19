@@ -13,7 +13,7 @@ int main() {
   ll N, M;
   in(N, M);
 
-  vi A(N), B(M);
+  vl A(N), B(M);
   in(A, B);
 
   out(min_plus_convolution(A, B));

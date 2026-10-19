@@ -34,10 +34,10 @@ int main() {
   ll N, Q;
   in(N, Q);
 
-  vi A(N);
+  vl A(N);
   in(A);
 
-  vvi G(N);
+  vvl G(N);
 
   rep(_, N - 1) {
     ll u, v;

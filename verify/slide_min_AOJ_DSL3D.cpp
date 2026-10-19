@@ -10,7 +10,7 @@ using namespace std;
 int main() {
   ll N, L;
   in(N, L);
-  vi A(N);
+  vl A(N);
   in(A);
 
   out(slide_min(A, L));

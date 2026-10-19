@@ -10,12 +10,12 @@ using namespace std;
 int main() {
   ll N;
   in(N);
-  vi A(N);
+  vl A(N);
   in(A);
 
   CartesianTree<ll> ct(A);
 
-  vi res(N);
+  vl res(N);
 
   rep(i, N) { res[i] = ct.par[i] == -1 ? i : ct.par[i]; }
   out(res);
