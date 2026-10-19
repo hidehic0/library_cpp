@@ -10,9 +10,9 @@ int main() {
   ll N;
   in(N);
 
-  vi D(N, 0);
+  vl D(N, 0);
 
-  vvi VG(N);
+  vvl VG(N);
   vvpii G(N);
 
   rep(_, N - 1) {
@@ -39,12 +39,12 @@ int main() {
   ll Q;
   in(Q);
 
-  vvi AG(N);
+  vvl AG(N);
 
   while (Q--) {
     ll K;
     in(K);
-    vi X(K);
+    vl X(K);
     in(X);
 
     ll root = AT.build(X, AG), res = 0;

@@ -11,9 +11,9 @@ using namespace std;
 int main() {
   ll N, Q;
   in(N, Q);
-  vvi G(N);
+  vvl G(N);
 
-  vi P(N - 1);
+  vl P(N - 1);
   in(P);
 
   rep(i, N - 1) G[P[i]].emplace_back(i + 1);

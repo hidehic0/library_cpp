@@ -11,10 +11,10 @@ using namespace std;
 int main() {
   ll N, Q;
   in(N, Q);
-  vi A(N);
+  vl A(N);
   in(A);
 
-  vvi G(N);
+  vvl G(N);
 
   rep(_, N - 1) {
     ll u, v;
@@ -28,7 +28,7 @@ int main() {
   auto e = [&]() { return 0; };
   auto op = [](ll a, ll b) { return a + b; };
 
-  vi seg(N * 2, e());
+  vl seg(N * 2, e());
 
   rep(i, N) seg[hld.in[i] + N] = A[i];
   rrep(i, 1, N) { seg[i] = op(seg[i << 1], seg[i << 1 | 1]); }

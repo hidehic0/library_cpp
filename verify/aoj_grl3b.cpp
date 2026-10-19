@@ -20,7 +20,7 @@ int main() {
   LowLink LG(G);
   sort(all(LG.bridges));
 
-  set<pii> S;
+  set<pll> S;
 
   for (auto [a, b] : LG.bridges) {
     if (a > b)

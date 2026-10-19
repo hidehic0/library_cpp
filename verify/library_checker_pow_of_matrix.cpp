@@ -17,7 +17,7 @@ inline ll id() { return 1; }
 int main() {
   ll N, K;
   in(N, K);
-  vvi A(N, vi(N));
+  vvl A(N, vl(N));
   in(A);
 
   Matrix<ll, add, op, e, id> mat(A);

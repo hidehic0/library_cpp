@@ -14,7 +14,7 @@ int main() {
   in(N);
 
   SegmentTree2D<ll, [](ll a, ll b) { return a + b; }, []() { return 0; }> seg(
-      vvi(1003, vi(1003)));
+      vvl(1003, vl(1003)));
 
   rep(_, N) {
     ll x1, x2, y1, y2;

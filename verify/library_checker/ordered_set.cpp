@@ -11,7 +11,7 @@ using namespace std;
 int main() {
   ll N, Q;
   in(N, Q);
-  vi A(N);
+  vl A(N);
   in(A);
 
   SortedList<int> S;
