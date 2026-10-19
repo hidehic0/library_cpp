@@ -8,7 +8,7 @@
 #include <utility>
 
 struct RangeSet {
-  spii s;
+  spll s;
 
   RangeSet() {
     s.emplace(LONG_LONG_MIN, LONG_LONG_MIN);
@@ -53,7 +53,7 @@ struct RangeSet {
 
     auto nit = it;
 
-    VC<pii> D;
+    VC<pll> D;
     ll nl = l, nr = r;
 
     while (nit != s.end() && nit->first <= r) {
