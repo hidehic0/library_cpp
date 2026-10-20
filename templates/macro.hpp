@@ -11,6 +11,7 @@
 #define rrep(...) overload4(__VA_ARGS__, RREP, _rrep)(__VA_ARGS__)
 
 #define all(a) (a).begin(), (a).end()
+#define rall(a) (a).rbegin(), (a).rend()
 
 template <typename T> bool chmin(T &a, T b) {
   if (a > b) {
