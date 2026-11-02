@@ -20,10 +20,10 @@ jobs:
   setup:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/checkout@v7.0.1
 
       - name: Install uv
-        uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e # v10.3.2
+        uses: astral-sh/setup-uv@v10.3.0
         with:
           enable-cache: true
 
@@ -32,7 +32,7 @@ jobs:
 
       # Initialize your own environment for resolving.
       - name: oj-resolve
-        uses: competitive-verifier/actions/oj-resolve@92115271d5b6a0546076c83cd1740333baf7ef1a # v2.2.0
+        uses: competitive-verifier/actions/oj-resolve@v2.2.0
         with:
           config: config.toml
           output-path: verify_files.json
@@ -46,12 +46,12 @@ jobs:
           # If you have config.toml
           # config: .verify-helper/config.toml
       - name: parse-doxygen
-        uses: competitive-verifier/actions/parse-doxygen@92115271d5b6a0546076c83cd1740333baf7ef1a # v2.2.0
+        uses: competitive-verifier/actions/parse-doxygen@v2.2.0
         with:
           verify-files: verify_files.json
 
       - name: Upload verify_files.json
-        uses: competitive-verifier/actions/upload-verify-artifact@92115271d5b6a0546076c83cd1740333baf7ef1a # v2.2.0
+        uses: competitive-verifier/actions/upload-verify-artifact@v2.2.0
         with:
           file: verify_files.json
 
@@ -60,7 +60,7 @@ jobs:
         run: |
           echo "count=$(find .competitive-verifier/bundled/ -type f | wc -l)" >> $GITHUB_OUTPUT
       - name: Upload bundled
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        uses: actions/upload-artifact@v7.0.2
         if: steps.test-bundled.outputs.count > 0
         with:
           name: Bundled-${{ runner.os }}
@@ -79,13 +79,13 @@ jobs:
           ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09",
            "10", "11", "12", "13", "14", "15", "16", "17", "18", "19"]
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/checkout@v7.0.1
 
       - name: Download verify_files.json
-        uses: competitive-verifier/actions/download-verify-artifact@92115271d5b6a0546076c83cd1740333baf7ef1a # v2.2.0
+        uses: competitive-verifier/actions/download-verify-artifact@v2.2.0
 
       - name: Install uv
-        uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e # v10.3.2
+        uses: astral-sh/setup-uv@v10.3.0
         with:
           enable-cache: true
 
@@ -93,7 +93,7 @@ jobs:
         run: uv tool install --python 3.14 competitive-verifier
 
       - name: Verify
-        uses: competitive-verifier/actions/verify@92115271d5b6a0546076c83cd1740333baf7ef1a # v2.2.0
+        uses: competitive-verifier/actions/verify@v2.2.0
         with:
           destination: ${{runner.temp}}/result.json
           split-size: ${{ env.SPLIT_SIZE }}
@@ -103,7 +103,7 @@ jobs:
           YUKICODER_TOKEN: ${{secrets.YUKICODER_TOKEN}}
 
       - name: Upload result artifact
-        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        uses: actions/upload-artifact@v7.0.2
         with:
           name: Result-${{ runner.os }}-${{ matrix.index }}
           path: ${{runner.temp}}/result.json
@@ -115,13 +115,13 @@ jobs:
     outputs:
       upload-pages: ${{steps.upload-pages.outcome == 'success'}}
     steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 2147483647
 
       - name: Download verify_files.json and all artifacts
         id: all-artifacts
-        uses: competitive-verifier/actions/download-verify-artifact@92115271d5b6a0546076c83cd1740333baf7ef1a # v2.2.0
+        uses: competitive-verifier/actions/download-verify-artifact@v2.2.0
         with:
           download-all: true
           artifact-root: .artifacts/
@@ -140,7 +140,7 @@ jobs:
           SRCDIR: .artifacts/Bundled-${{ runner.os }}
 
       - name: Install uv
-        uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e # v10.3.2
+        uses: astral-sh/setup-uv@v10.3.0
         with:
           enable-cache: true
 
@@ -148,27 +148,27 @@ jobs:
         run: uv tool install --python 3.14 competitive-verifier
 
       - name: Docs
-        uses: competitive-verifier/actions/docs@92115271d5b6a0546076c83cd1740333baf7ef1a # v2.2.0
+        uses: competitive-verifier/actions/docs@v2.2.0
         with:
           verify-result: ${{ steps.all-artifacts.outputs.artifacts-root }}/Result-*/result.json
           destination: _jekyll
           write-summary: true
 
       - name: Setup Pages
-        uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
+        uses: actions/configure-pages@v6.0.0
       - name: Build with Jekyll
-        uses: actions/jekyll-build-pages@44a6e6beabd48582f863aeeb6cb2151cc1716697 # v1.0.13
+        uses: actions/jekyll-build-pages@v1.0.13
         with:
           source: _jekyll
           destination: _site
       - name: Upload artifact
         id: upload-pages
-        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        uses: actions/upload-pages-artifact@v5.0.0
         with:
           path: _site
 
       - name: Check
-        uses: competitive-verifier/actions/check@92115271d5b6a0546076c83cd1740333baf7ef1a # v2.2.0
+        uses: competitive-verifier/actions/check@v2.2.0
         with:
           verify-result: ${{ steps.all-artifacts.outputs.artifacts-root }}/Result-*/result.json
   deploy:
@@ -181,4 +181,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
+        uses: actions/deploy-pages@v5.0.1
