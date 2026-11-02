@@ -7,7 +7,7 @@ workflows:
         - 'actions/checkout@v7.0.1'
         - 'cachix/install-nix-action@v31.11.2'
         - 'crazy-max/ghaction-import-gpg@v7.0.0'
-        - 'stefanzweifel/git-auto-commit-action@v7.2.0'
+        - 'stefanzweifel/git-auto-commit-action@v7.2.1'
     '.github/workflows/verify.yml':
         - 'actions/checkout@v7.0.1'
         - 'actions/configure-pages@v6.0.0'
@@ -88,8 +88,8 @@ dependencies:
         commit: 'sha1-2dc316deee8e90f13e1a351ab510b4d5bc0c82cd'
         owner_id: 1951866
         repo_id: 260488959
-    'stefanzweifel/git-auto-commit-action@v7.2.0':
-        ref: 'v7.2.0'
-        commit: 'sha1-4a55954c782fc1ea30b9056cd3e7a2b40ca8887d'
+    'stefanzweifel/git-auto-commit-action@v7.2.1':
+        ref: 'v7.2.1'
+        commit: 'sha1-d0b01107b5db882071f96de5dd4b54961ea93f4c'
         owner_id: 1080923
         repo_id: 191163758
