@@ -1,5 +1,6 @@
 #pragma once
 #include <bits/stdc++.h>
+#include <cassert>
 
 struct BitVector {
   using u64 = uint64_t;
@@ -53,6 +54,9 @@ template <std::integral Tp, int H = 64> struct WaveletMatrix {
 
   //! [left,right)の区間で、xより大きい値の個数を求める
   int upper_cnt(int left, int right, Tp x) {
+    assert(0 <= left && left <= right && right <= N);
+    assert(x >= 0);
+
     int res = 0;
 
     for (int b = H - 1; b >= 0; b--) {
@@ -80,6 +84,9 @@ template <std::integral Tp, int H = 64> struct WaveletMatrix {
 
   //! [left,right)の区間で、x未満の値の個数を求める
   int lower_cnt(int left, int right, Tp x) {
+    assert(0 <= left && left <= right && right <= N);
+    assert(x >= 0);
+
     int res = 0;
 
     for (int b = H - 1; b >= 0; b--) {
@@ -107,6 +114,9 @@ template <std::integral Tp, int H = 64> struct WaveletMatrix {
 
   //! [left,right)のなかでk番目(0-indexed)に大きい値を求める
   Tp kth_largest(int left, int right, int k) {
+    assert(0 <= left && left <= right && right <= N);
+    assert(0 <= k && k < right - left);
+
     Tp res = 0;
 
     for (int b = H - 1; b >= 0; b--) {
