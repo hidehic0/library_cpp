@@ -5,7 +5,7 @@ version: 'v0.0.3'
 workflows:
     '.github/workflows/update-nix-flake.yaml':
         - 'actions/checkout@v7.0.1'
-        - 'cachix/install-nix-action@v32.0.0'
+        - 'cachix/install-nix-action@v32.1.0'
         - 'crazy-max/ghaction-import-gpg@v7.0.0'
         - 'stefanzweifel/git-auto-commit-action@v7.2.1'
     '.github/workflows/verify.yml':
@@ -70,9 +70,9 @@ dependencies:
         commit: 'sha1-1db35dd8eee11c5894872e0b383ae6c406cf738d'
         owner_id: 115962839
         repo_id: 846733598
-    'cachix/install-nix-action@v32.0.0':
-        ref: 'v32.0.0'
-        commit: 'sha1-bb0495a1086c46893eee56f32fd192dfe4a15bb9'
+    'cachix/install-nix-action@v32.1.0':
+        ref: 'v32.1.0'
+        commit: 'sha1-382a9ed9481c7c1f94f68b72ef105b3417c73877'
         owner_id: 36824654
         repo_id: 212301524
     'competitive-verifier/actions@v2.2.0':
